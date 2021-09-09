@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab1</title>
+    <style>
+        body{
+            background-color: white;
+            padding: 0px 200px 0px 200px;
+        }
+        .cap{
+            padding-left: 20px;
+            padding-right: 20px;
+            height: 40px;
+            font-size: 25px;
+            color: black;
+            background-color: grey;
+            font-family: Serif;
+            border-radius: 5px;
+        }
+        .td_graph, .td_values{
+            color: black;
+            text-align: center;
+            font-family: Arial;
+            vertical-align: top;
+        }
+        .mini_title{
+            font-size: 25px;
+            color: black;
+            text-align: center;
+            height: 25px;
+            padding: 20px;
+            background-color: #BA8316;
+            border-radius: 5px;
+        }
+        .result_table{
+            text-align: center;
+        }
+        .table_coordinate{
+            width: 30px;
+            height: 30px;
+        }
+        .table_time{
+            width: 130px;
+        }
+        .x_div, .r_div{
+            float: left;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            margin-left: 5px;
+        }
+        .x_label, .r_label{
+            position: absolute;
+            top: 20px;
+            left: 7px;
+        }
+        .float_label{
+            position: absolute;
+            top: 20px;
+            left: 0px;
+        }
+        .main_table_tr{
+            height: 50px;
+        }
+        .submit_button, .reset_button{
+            margin-left: 40px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 90px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        .submit_button:hover, .reset_button:hover{
+            background-color: #F89B4D;
+        }
+        .main_td{
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <table width="100%">
+        <tr>
+            <td class="cap">
+                Razzhivin Danil Andreevich Group: P3212 Variant: 12016
+            </td>
+        </tr>
+    </table>
+    <table width="100%">
+        <tr>
+            <td class="td_graph">
+                <div class="mini_title"><span>Graph</span></div>
+                <div><img src="./Images/areas.png" alt="Graph"></div>
+            </td>
+            <td class="td_values">
+                <div class="mini_title"><span>Values</span></div>
+                <div>
+                    <form action="php/index.php" method="POST" id="form" class="form">
+                        <table>
+                            <tr class="tr_x main_table_tr">
+                                <td>X:</td>
+                                <td>
+                                    <div class="x_div div_radio"><input id="x_input1" class="x_input" name="x_choice" type="radio" value="-5">
+                                        <label class="x_label" for="x_input1">-5</label></div>
+                                    <div class="x_div div_radio"><input id="x_input2" class="x_input" name="x_choice" type="radio" value="-4">
+                                        <label class="x_label" for="x_input2">-4</label></div>
+                                    <div class="x_div div_radio"><input id="x_input3" class="x_input" name="x_choice" type="radio" value="-3">
+                                        <label class="x_label" for="x_input3">-3</label></div>
+                                    <div class="x_div div_radio"><input id="x_input4" class="x_input" name="x_choice" type="radio" value="-2">
+                                        <label class="x_label" for="x_input4">-2</label></div>
+                                    <div class="x_div div_radio"><input id="x_input5" class="x_input" name="x_choice" type="radio" value="-1">
+                                        <label class="x_label" for="x_input5">-1</label></div>
+                                    <div class="x_div div_radio"><input id="x_input6" class="x_input" name="x_choice" type="radio" value="0">
+                                        <label class="x_label" for="x_input6">0</label></div>
+                                    <div class="x_div div_radio"><input id="x_input7" class="x_input" name="x_choice" type="radio" value="1">
+                                        <label class="x_label" for="x_input7">1</label></div>
+                                    <div class="x_div div_radio"><input id="x_input8" class="x_input" name="x_choice" type="radio" value="2">
+                                        <label class="x_label" for="x_input8">2</label></div>
+                                    <div class="x_div div_radio"><input id="x_input9" class="x_input" name="x_choice" type="radio" value="3">
+                                        <label class="x_label" for="x_input9">3</label></div>
+                                </td>
+                            </tr>
+                            <tr class="tr_y main_table_tr">
+                                <td><label for="y_input">Y:[-3;3]</label></td>
+                                <td><input type="text" name="y_coordinate" id="y_input"></td>
+                            </tr>
+                            <tr class="tr_r main_table_tr">
+                                <td>R:</td>
+                                <td>
+                                    <div class="r_div div_radio"><input id="r_input1" class="r_input" name="r_choice" type="radio" value="1">
+                                        <label class="r_label" for="r_input1">1</label></div>
+                                    <div class="r_div div_radio"><input id="r_input2" class="r_input" name="r_choice" type="radio" value="1.5">
+                                        <label class="float_label" for="r_input2">1.5</label></div>
+                                    <div class="r_div div_radio"><input id="r_input3" class="r_input" name="r_choice" type="radio" value="2">
+                                        <label class="r_label" for="r_input3">2</label></div>
+                                    <div class="r_div div_radio"><input id="r_input4" class="r_input" name="r_choice" type="radio" value="2.5">
+                                        <label class="float_label" for="r_input4">2.5</label></div>
+                                    <div class="r_div div_radio"><input id="r_input5" class="r_input" name="r_choice" type="radio" value="3">
+                                        <label class="r_label" for="r_input5">3</label></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr class="tr_buttons main_table_tr">
+                                <td>
+                                    <input class="submit_button" type="submit" value="Submit">
+                                    <input class="reset_button" type="reset" value="Reset">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+            <td class="main_td table_header_td">
+                <div class="mini_title">Table with previous requests</div>
+                <div>
+                    <table class="result_table" id="result_table">
+                        <tr>
+                            <th class="table_coordinate">X</th>
+                            <th class="table_coordinate">Y</th>
+                            <th class="table_coordinate">R</th>
+                            <th class="table_time">Current Time</th>
+                            <th class="table_time">Execution time</th>
+                            <th class="table_result">Result</th>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script src="js/jquery.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
