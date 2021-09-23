@@ -123,7 +123,7 @@
                             </tr>
                             <tr class="tr_y main_table_tr">
                                 <td><label for="y_input">Y:[-3;3]</label></td>
-                                <td><input type="text" name="y_coordinate" id="y_input"></td>
+                                <td><input type="text" name="y_coordinate" id="y_input" maxlength="7"></td>
                             </tr>
                             <tr class="tr_r main_table_tr">
                                 <td>R:</td>
@@ -169,6 +169,8 @@
             </td>
         </tr>
     </table>
+    <div id="errors_div"></div>
+    <table class="errors" id="errors"></table>
     <script src="js/jquery.js"></script>
     <script src="js/index.js"></script>
 </body>
