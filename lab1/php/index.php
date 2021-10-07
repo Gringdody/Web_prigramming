@@ -50,6 +50,10 @@ $validate = validate_form($x_choice, $y_coordinate, $r_choice);
 $boolean_validate = $validate ? 'true' : 'false';
 $hit = check_hit($x_choice, $y_coordinate, $r_choice);
 $answer_hit = $hit ? 'hit' : 'miss';
+if (!$validate){$error = "<div id='validation_error'>error</div>";
+  echo ($error);
+  return;
+}
 
 $currentTime = date('H:i:s', time()-$timezone*60);
 $executionTime = round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 5);
@@ -64,4 +68,28 @@ $data = '{' .
   "\"hit_result\":\"$answer_hit\"".
   "}";  
 
-echo $data;
+
+
+echo <<< html
+<table class="result_table" id="result_table">
+<tr>
+                            <th class="table_coordinate">X</th>
+                            <th class="table_coordinate">Y</th>
+                            <th class="table_coordinate">R</th>
+                            <th class="table_time">Current Time</th>
+                            <th class="table_time">Execution time</th>
+                            <th class="table_result">Result</th>
+                        </tr>
+  <tr id="take_this">
+      <td id="x_value">{$x_choice}</td>
+      <td id="y_value">{$y_coordinate}</td>
+      <td id="r_value">{$r_choice}</td>
+      <td id="current_time">{$currentTime}</td>
+      <td id="time_execute">{$executionTime}</td>
+      <td id="hit_result">{$answer_hit}</td>
+    </tr>
+</table>
+
+html;
+
+?>

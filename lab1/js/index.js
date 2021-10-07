@@ -43,15 +43,15 @@ $(function() {
     }
 
     $('#form').on('submit', function(event) {
-        if(document.getElementById("errors").rows.length != 0){
+        /*if(document.getElementById("errors").rows.length != 0){
             let table = document.getElementById("errors");
             let rowCount = table.rows.length;
             while(table.rows.length > 0) {
                 table.deleteRow(0);
             }
-        }
+        }*/
         event.preventDefault();
-        document.getElementById("errors_div").innerHTML = "";
+        document.getElementById("errors_div").innerHTML = '';
 
         if (!validate_coordinate('.x_input')){
             document.getElementById('errors_div').innerHTML = '<b>X coordinate error</b>';
@@ -70,21 +70,15 @@ $(function() {
         $.ajax({
             url: 'php/index.php',
             method: 'POST',
-            data: $(this).serialize() + '&timezone=' + new Date().getTimezoneOffset(),
-            dataType: "json",
-            success: function(data) {
-                let answer;
-                if (data.validate) {
-                    answer = '<tr>';
-                    answer += '<td>' + data.x_value + '</td>';
-                    answer += '<td>' + data.y_value + '</td>';
-                    answer += '<td>' + data.r_value + '</td>';
-                    answer += '<td>' + data.current_time + '</td>';
-                    answer += '<td>' + data.time_execute + '</td>';
-                    answer += '<td>' + data.hit_result + '</td>';
+            data: $(this).serialize() + '&timezone=' + new Date().getTimezoneOffset() + '',
+            dataType: "HTML",
+            success: function(answer) {
+                if($(answer).find('#validation_error').html()){document.getElementById('errors_div').innerHTML = '<b>Server validation error</b>';}
+                else{
                     let str = get_random_int().toString();
-                    sessionStorage.setItem(str, answer);
-                    $('#result_table').append(answer);
+                    let result = '<tr>' + $(answer).find('#take_this').html() + '</tr>';
+                    $('#result_table').append(result);
+                    sessionStorage.setItem(str, result);
                 }
             }
         });
